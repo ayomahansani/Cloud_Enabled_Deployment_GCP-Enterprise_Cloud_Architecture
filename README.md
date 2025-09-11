@@ -1,4 +1,4 @@
-# Cloud Enabled Deployment In Action with AWS
+# Cloud Enabled Deployment In Action with Google Cloud Provider
 
 This repository contains four projects:
 
@@ -10,14 +10,25 @@ This repository contains four projects:
 ## Backend Services
 
 ### 1. course-service
-- Entity: Course(id, name, duration)
-- Endpoints:
-  - GET /courses
-  - GET /courses/{id}
-  - POST /courses
-  - DELETE /courses/{id}
-- Default port: 8081
-- Configure MySQL settings
+- **Entity**: `Course(id, name, duration)`
+- **Endpoints**:
+  - `GET /courses`
+  - `GET /courses/{id}`
+  - `POST /courses`
+  - `DELETE /courses/{id}`
+- **Default port**: `8081`
+
+#### ⚙️ GCP MySQL Configuration
+The service is configured to connect to a **Google Cloud-hosted MySQL instance:**
+
+```properties
+spring.datasource.host=35.225.80.61
+spring.datasource.port=3306
+spring.datasource.url=jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/eca_courses?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=mysql-ECA-12
+```
+
 
 ### 2. student-service
 - Document: Student(registrationNumber, fullName, address, contact, email)
@@ -50,3 +61,13 @@ This repository contains four projects:
 
 - Backend: run `mvn -q -e -DskipTests package` at repo root to build services.
 - Frontend: run `npm install` then `npm run dev` inside `frontend-app`.
+
+## Resources
+
+- Check out how the project works in this demo video on Google Drive:
+  https://drive.google.com/file/d/10odRfqssuUkCpaBhnToJQcQdMXa65VNZ/view?usp=sharing
+
+## License
+
+- This project is licensed under the MIT License. 
+- Feel free to reuse, extend, or modify it for educational or commercial purposes.
